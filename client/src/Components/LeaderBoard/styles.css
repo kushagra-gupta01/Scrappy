@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body
+{
+    background-image:linear-gradient(90deg, rgb(56, 16, 89), rgb(21, 6, 60));
+}
+* > * {
+    font-family: "Poppins", cursive;
+    margin: 0;
+}
+
+span
+{
+    color: #ffffff;
+}
+:root{
+    --color-dark: #ffffff;
+    --color-light: #ffffff;
+}
+
+#main{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 100vh; */
+}
+
+.board {
+    text-align: center;
+}
+
+.board .leaderboard{
+    background-image: linear-gradient(90deg, rgb(140, 112, 240), rgb(242, 246, 225));
+    background-clip: text;
+    font-weight: bolder;
+    -webkit-text-fill-color: transparent;
+    font-size: 50px;
+    margin-bottom: 10px;
+    padding-top: 60px;
+}
+
+.board .duration{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.board .duration > button{
+    border: none;
+    font-weight: bold;
+    padding: .5em 2em;
+    border-radius: 50px;
+    background-image: linear-gradient(90deg, rgb(140, 112, 240), rgb(242, 246, 225));
+    cursor: pointer;
+}
+
+.board .duration > button:hover{
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+.active{
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+#profile{
+    /* display: flex; */
+    /* width: 600px; */
+    margin-top: 3em;
+}
+
+#profile .flex{
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    text-align: left;
+    margin-bottom: 2em;
+}
+
+#profile .flex .item{
+    display: flex;
+    align-items: center;
+}
+
+#profile .flex img{
+    width: 20%;
+    border-radius: 50%;
+}
+
+#profile .flex .info{
+   padding: 1em;
+}
+
+.text-dark{
+    color: var(--color-dark);
+}
+
+
+.radio-inputs {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #EEE;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: 300px;
+    font-size: 14px;
+  }
+  
+  .radio-inputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  
+  .radio-inputs .radio input {
+    display: none;
+  }
+  
+  .radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all .15s ease-in-out;
+  }
+  
+  .radio-inputs .radio input:checked + .name {
+    background-color: rgb(140, 112, 240);
+    color: #ffffff;
+    font-weight: 600;
+  }
+  @media only screen and (min-width: 550px) {
+    .leaderBoard_container
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    #profile{
+        /* display: flex; */
+        width: 600px;
+        margin-top: 3em;
+    }
+  }
+  
+  @media only screen and (max-width: 540px) {
+    #profile .flex img
+    {
+        width: 18%;
+        margin-left: 13px;
+        border-radius: 50%;
+    }
+    #score
+    {
+        margin-right: 30px;
+    }
+  }
+ 

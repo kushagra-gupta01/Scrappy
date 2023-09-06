@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YOLOv8 Object Detection</title>
+</head>
+<body>
+    <input id="uploadInput" type="file"/>
+    <script>
+       /**
+       * "Upload" button onClick handler: uploads selected 
+       * image file to backend, receives an array of
+       * detected objects and logs it to the console
+       */
+       const input = document.getElementById("uploadInput");
+       input.addEventListener("change", async (event) => {
+           const file = event.target.files[0];
+           const data = new FormData();
+           data.append("image_file", file, "image_file");
+           const response = await fetch("/detect", {
+               method: "post",
+               body: data
+           });
+           const boxes = await response.json();
+           console.log(boxes); // Log the JSON output to the console
+       });
+  </script>  
+</body>
+</html>
