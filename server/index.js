@@ -13,7 +13,7 @@ const { animationControls } = require('framer-motion');
 app.use(cors());
 app.use(express.json());
 // mongoose.connect('mongodb://localhost:27017/');
-mongoose.connect('mongodb+srv://amankumarz2404:callofduty@cluster0.lf2rgu2.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect("mongodb+srv://kushagra:cncf@cluster0.cajno36.mongodb.net/?retryWrites=true&w=majority");
 app.use(express.static('build'));
 
 app.post('/api/register', async (req, res) => {
