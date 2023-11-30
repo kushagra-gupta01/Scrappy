@@ -29,7 +29,7 @@ jobs:
     
     - name: Install client dependencies and start client server
       run: |
-          cd client
+          cd /home/runner/work/Scrappy/Scrappy/client
           npm ci
           npm run build --if-present
           npm start &
