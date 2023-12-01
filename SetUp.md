@@ -1,4 +1,4 @@
-## SetUp client 
+### SetUp Client Side  
 **cd client**
 >```npm i```<br>
 > ```npm start```
