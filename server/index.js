@@ -225,3 +225,23 @@ app.listen(1337, () => {
     console.log(`server on running on port ${1337}`)
 })  
 
+app.post("/api/donate", async (req, res) => {
+  try {
+    const { name, locality, phno, amt, donationType, token } = req.body;
+
+    const charge = await stripe.charges.create({
+      amount: amt * 100,
+      currency: "usd",
+      description: `Donation for ${donationType}`,
+      source: token.id,
+    });
+
+    console.log("Payment Successful:", charge);
+
+    res.status(200).json({ success: true, message: "Payment successful" });
+  } catch (error) {
+    console.error("Payment Error:", error);
+
+    res.status(500).json({ success: false, error: "Payment failed"});
+  }
+});
