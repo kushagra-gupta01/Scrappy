@@ -11,7 +11,7 @@ const Scanner = () => {
     const data = new FormData();
     data.append('image_file', file);
 
-    const response = await fetch('http://54.66.167.78:4000/detect', {
+    const response = await fetch('http://127.0.0.1:4000/detect', {
       method: 'POST',
       body: data,
     });
