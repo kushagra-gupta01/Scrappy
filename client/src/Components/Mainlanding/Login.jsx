@@ -35,6 +35,7 @@ const Signup = ({setToken}) => {
     if (data.user) {
       localStorage.setItem('token', data.user);
       alert('Login successful');
+      navigate("/");
       setToken(true);
     } else {
       alert('Please check your username and password');

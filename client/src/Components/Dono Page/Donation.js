@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import "./style.css";
 
@@ -30,13 +31,30 @@ function Donation() {
       });
   };
 
+  const navigate = useNavigate();
   return (
     <div className="Dcontainer">
+      <div className=" w-full pl-8 pt-6">
+        <div class="mb-[-30px]">
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+            data-text="Awesome"
+            class="button"
+          >
+            <span class="actual-text">&nbsp;Scrappy&nbsp;</span>
+            <span class="hover-text" aria-hidden="true">
+              &nbsp;Scrappy&nbsp;
+            </span>
+          </button>
+        </div>
+      </div>
       <div className="Dheading">Donate For Good!</div>
       <div className="Dcard">
         <div className="Dcard__content">
           <form>
-          <div className="ipDiv" id="nameIp">
+            <div className="ipDiv" id="nameIp">
               <label htmlFor="name">Name</label>
               <br />
               <input type="text" name="name" />
@@ -74,7 +92,9 @@ function Donation() {
                 amount={formData.amt}
                 currency="USD"
                 name="Donate For Good"
-                description= {`Proceed to pay ${formData.amt / 100} for donation`}
+                description={`Proceed to pay ${
+                  formData.amt / 100
+                } for donation`}
                 billingAddress
                 zipCode
               >
