@@ -5,7 +5,7 @@ Created a web app to promote garbage collection among Gen-Z's through gamificati
 • User can donate to the website through Stripe payment gateway.</br>
 • Implemented the backend APIs using Node.js.</br>
 • **Tech Stack**: Object Detection, AWS, TailwindCSS, ReactJS, NodeJS, Express, MongoDB
----
+
 ## Landing Page
 ![Landing](https://github.com/kushagra-gupta01/Scrappy/blob/main/img/LandingPage.png?raw=true)
 
