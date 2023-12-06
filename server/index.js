@@ -7,13 +7,12 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/user.models');
 const Event = require('./models/event.models');
 const path = require("path");
-const nodemailer = require("nodemailer");
 const { animationControls } = require('framer-motion');
 
 app.use(cors());
 app.use(express.json());
 // mongoose.connect('mongodb://localhost:27017/');
-mongoose.connect("mongodb+srv://kushagra:cncf@cluster0.cajno36.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://kushagragupta:cncf@cluster1.e4e1ncr.mongodb.net/");
 app.use(express.static('build'));
 
 app.post('/api/register', async (req, res) => {
@@ -28,16 +27,6 @@ app.post('/api/register', async (req, res) => {
             locality: req.body.locality,
             points: 0
         })
-        // const token = jwt.sign(
-        //     {
-        //         email: req.body.email,
-        //         name: req.body.name,
-        //         locality: req.body.locality,
-        //         username: req.body.username,
-        //         points: req.body.points
-        //     },
-        //     'secret123'
-        // )
         res.json({ status: 'ok'})
         console.log(newPassword);
     } catch (err) {
@@ -83,7 +72,6 @@ app.get('/api/profile', async (req, res) => {
         const fullname = decoded.fullname
         const locality = decoded.locality
         const username = decoded.username
-        // const points = decoded.points
 		const user = await User.findOne({ email: email, fullname: fullname, locality: locality, username: username})
 		return res.json({ status: 'ok', user: user})
 	} 
@@ -168,52 +156,6 @@ app.get('/api/logout',(req,res)=>{
     res.cookie(token,'', { maxAge: 1 });
     res.redirect('/');
 }) 
-
-
-const verificationCodes = {};
-
-app.post("/api/send-verification-code", (req, res) => {
-  const { email } = req.body;
-  const verificationCode = Math.floor(100000 + Math.random() * 900000);
-  verificationCodes[email] = verificationCode;
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.elasticemail.com",
-    port: 2525,
-    auth: {
-      user: "aman.kumarh2404@gmail.com",
-      pass: "90B0B9AD9E332B7FE5D9762BD309F8BBD0A4",
-    },
-  });
-
-  const mailOptions = {
-    from: "aman.kumarf2404@gmail.com",
-    to: email,
-    subject: "Email Verification",
-    text: `Your verification code is: ${verificationCode}`,
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log("Error sending verification code:", error);
-      res.status(500).json({ status: "error" });
-    } else {
-      console.log("Verification code sent successfully");
-      res.json({ status: "ok" });
-    }
-  });
-});
-
-
-app.post("/api/verify-email", (req, res) => {
-  const { email, verificationCode } = req.body;
-
-  if (verificationCodes[email] === verificationCode) {
-    res.json({ status: "ok" });
-  } else {
-    res.status(400).json({ status: "error" });
-  }
-});
 
 
 app.get("*", (req, res) => {
