@@ -8,6 +8,7 @@
 ## SetUp Node Server
 **cd server**
 >```npm i```<br>
+> **Replace the URL specified for Database Connection in index.js file**<br> 
 >```npx nodemon```
 
 ---

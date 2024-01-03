@@ -6,7 +6,7 @@ const EventList = () => {
 
   useEffect(() => {
     async function fetchEventDetails() {
-      const res = await fetch('/api/eventscreated', {
+      const res = await fetch('http://localhost:1337/api/eventscreated', {
         method: 'GET',
       });
       const data = await res.json();
@@ -45,7 +45,7 @@ const Event = ({ events }) => {
           <h5 className="mb-2 min-w-max mt-4 text-xl font-bold tracking-tight  text-white">
             {event.title}
           </h5>
-          <p className="font-normal text-sm mb-5  text-gray-400">
+          <p className="font-normal text-sm mb-5 w-[350px]  text-gray-400">
             {event.description}
           </p>
           <h5 className="mb-2 mt-4 text-lg font-normal tracking-tight  text-white">
@@ -68,4 +68,3 @@ const Event = ({ events }) => {
 };
 
 export default EventList;
-
