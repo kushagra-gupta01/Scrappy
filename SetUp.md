@@ -8,7 +8,7 @@
 ## SetUp Node Server
 **cd server**
 >```npm i```<br>
-> **Replace the URL specified for Database Connection in index.js file**<br> 
+> **Rename .env.example file as .env and assign value to environment variables**<br> 
 >```npx nodemon```
 
 ---

@@ -7,12 +7,12 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/user.models');
 const Event = require('./models/event.models');
 const path = require("path");
-const { animationControls } = require('framer-motion');
 
 app.use(cors());
 app.use(express.json());
-// mongoose.connect('mongodb://localhost:27017/');
-mongoose.connect("mongodb+srv://kushagragupta:cncf@cluster1.e4e1ncr.mongodb.net/");
+
+require("dotenv").config();
+mongoose.connect(process.env.MONGO_URI);
 app.use(express.static('build'));
 
 app.post('/api/register', async (req, res) => {
