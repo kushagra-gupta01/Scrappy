@@ -8,30 +8,35 @@ function Donation() {
     name: "",
     locality: "",
     phno: "",
-    amt: 500,
+    amt: "",
     donationType: "Dustbins",
     token: null,
   });
 
-  const handleToken = (token) => {
-    setFormData({ ...formData, token });
-    fetch("http://localhost:3001/api/donate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
+const handleToken = (token) => {
+  setFormData({ ...formData, token });
+  fetch("http://localhost:3001/api/donate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ ...formData, amount: formData.amt }), 
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
 
-  const navigate = useNavigate();
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setFormData({ ...formData, [name]: value });
+};
+
+const navigate = useNavigate();
   return (
     <div className="Dcontainer">
       <div className=" w-full pl-8 pt-6">
@@ -72,7 +77,7 @@ function Donation() {
             <div className="ipDiv">
               <label htmlFor="amt">Amount</label>
               <br />
-              <input type="number" name="amt" />
+              <input type="number" name="amt" value={formData.amt} onChange={handleInputChange} required/>
             </div>
             <span>What do you want us to implant?</span>
             <div className="radio-inputs">
@@ -92,8 +97,8 @@ function Donation() {
                 amount={formData.amt}
                 currency="USD"
                 name="Donate For Good"
-                description={`Proceed to pay ${
-                  formData.amt / 100
+                description={`Proceed to pay $${
+                  formData.amt
                 } for donation`}
                 billingAddress
                 zipCode

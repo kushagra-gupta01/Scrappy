@@ -172,7 +172,7 @@ app.post("/api/donate", async (req, res) => {
     const { name, locality, phno, amt, donationType, token } = req.body;
 
     const charge = await stripe.charges.create({
-      amount: amt * 100,
+      amount: amt,
       currency: "usd",
       description: `Donation for ${donationType}`,
       source: token.id,
